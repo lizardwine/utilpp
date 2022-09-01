@@ -4,10 +4,10 @@
 using namespace std;
 
 
-string input(string message){
+string input(string message,int buffer_size = 2048,char end_signal = '\n'){
     cout<<message;
-    string var;
-    cin>>var;
+    char var[buffer_size];
+    cin.getline(var,buffer_size,end_signal);
     return var;
 }
 int inputI(string message){
