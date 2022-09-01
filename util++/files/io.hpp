@@ -1,7 +1,7 @@
 #include <fstream>
-
+#include <iostream>
 using namespace std;
-
+namespace iofiles{
 void handle_openv_error(int errvar){
     if(errvar == 0){
         cout<<"No error."<<endl;
@@ -21,6 +21,7 @@ void handle_openv_error(int errvar){
     }
 
 }
+
 class openv{
     private:
         string file = "";
@@ -82,3 +83,4 @@ string openv::read(string mode,int &errvar){
 }
 
 
+}

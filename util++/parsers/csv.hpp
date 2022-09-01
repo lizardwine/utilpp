@@ -6,7 +6,7 @@
 
 using namespace std;
 using namespace nlohmann;
-
+namespace csv{
 int count(char c, string &str)
 {
     int count = 0;
@@ -45,7 +45,7 @@ vector<vector<string>> opencsv::read_to_vector(char delimiter,bool ignore_header
         getline(file, line);
         int stop = count(delimiter,line);
         stringstream ss(line);
-        for(int i = 0;i<stop;i++){
+        for(int i = 0;i<=stop;i++){
             string subline;
             getline(ss, subline,delimiter);
             current_line.push_back(subline);
@@ -67,4 +67,5 @@ vector<json> opencsv::read_to_json(char delimiter){
         result.push_back(cjson);
     }
     return result;
-}   
+}  
+}

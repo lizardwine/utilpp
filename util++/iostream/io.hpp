@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-
+namespace io{
 string input(string message,int buffer_size = 2048,char end_signal = '\n'){
     cout<<message;
     char var[buffer_size];
@@ -113,3 +113,4 @@ class print{
        
 
 };
+}

@@ -6,9 +6,10 @@
 #include <iostream>
 
 using namespace std;
+
+namespace net{
+
 typedef int Socket;
-
-
 class client{
     private:
         int sock, client_fd;
@@ -134,4 +135,5 @@ void server::Close_socket(Socket socket){
 }
 void server::Shutdown(){
     shutdown(this->server_fd, SHUT_RDWR);
+}
 }

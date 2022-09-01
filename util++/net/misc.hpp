@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <curl/curl.h>
-/* For older cURL versions you will also need 
-#include <curl/types.h>
-#include <curl/easy.h>
-*/
 #include <string>
 
+namespace miscnet{
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) {
     size_t written = fwrite(ptr, size, nmemb, stream);
     return written;
@@ -25,4 +22,5 @@ void DownloadFile(const char*url, const char* outfilename){
         curl_easy_cleanup(curl);
         fclose(fp);
     }
+}
 }
