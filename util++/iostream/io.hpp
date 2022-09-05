@@ -1,9 +1,16 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <stdio.h>
 using namespace std;
 
 namespace io{
+
+void gotoxy(int x,int y)    
+{
+    printf("%c[%d;%df",0x1B,y,x);
+}
+
 string input(string message,int buffer_size = 2048,char end_signal = '\n'){
     cout<<message;
     char var[buffer_size];
