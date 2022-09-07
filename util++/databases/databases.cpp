@@ -23,7 +23,7 @@ bool insert(MYSQL* conn, string query) {
 	else return false;
 }
 
-map<int, MYSQL_ROW> read(MYSQL* conn, string query) {
+map<int, MYSQL_ROW> query(MYSQL* conn, string query) {
 	MYSQL_ROW row;
 	MYSQL_RES *res;
 	
@@ -50,46 +50,45 @@ map<int, MYSQL_ROW> read(MYSQL* conn, string query) {
 
 
 /*
-	//tests file
-	#include<iostream>
-	#include "./util++/databases/databases.cpp"
+#include <iostream>
+#include <string>
+#include "./util++/databases/databases.cpp"
 
-	using namespace std;
+using namespace std;
 
-	int main(int argc, char const *argv[]){
-	    string host = "localhost";
-	    string username = "root";
-	    string password = " ";
-	    string dbName = "dbname";
+int main(int argc, char const *argv[]){
+    string host = "localhost";
+    string username = "root";
+    string password = "";
+    string dbName = "dbname";
 
-		//----------------------Connection----------------------//
-	    MYSQL* conn = databases(host, username, password, dbName, 0);
-	    if(&conn) {
-	        cout << "Connected with success" << endl;
-	    }else {
-	        cout << "Failed to connect" << endl;
-	    }
+    //----------------------Connection----------------------//
+    MYSQL* conn = databases(host, username, password, dbName, 0);
+    if(&conn) {
+        cout << "Connected with success" << endl;
+    }else {
+        cout << "Failed to connect" << endl;
+    }
 
-		//------------------------Insert------------------------//
-	    string insert_query = "INSERT INTO `usernames` (name) VALUES (\"Jose\");";
-	    if(!insert(conn, insert_query)) {
-	        cout << "Error" << endl;
-	    }else {
-	        cout << "Correct" << endl;
-	    }
-	    
-	    //-------------------------Read-------------------------//
-	    string read_query = "SELECT * FROM `usernames`";
-	    map<int, MYSQL_ROW> result = read(conn, read_query);
-	    cout << result[0][1] << endl;
+    //------------------------Insert------------------------//
+    string insert_query = "INSERT INTO `usernames` (name) VALUES (\"Jose\");";
+    if(!insert(conn, insert_query)) {
+        cout << "Error" << endl;
+    }else {
+        cout << "Correct" << endl;
+    }
+    
+    //-------------------------Read-------------------------//
+    string read_query = "SELECT * FROM `usernames`";
+    map<int, MYSQL_ROW> read_result = query(conn, read_query);
+    cout << read_result[0][1] << endl;
 
-	    //-------------------------Find-------------------------//
-		string read_query = "SELECT * FROM `usernames` WHERE `id`=1";
-		map<int, MYSQL_ROW> result = read(conn, read_query);
-		cout << result[0][1] << endl;
+    //-------------------------Find-------------------------//
+    string find_query = "SELECT * FROM `usernames` WHERE `id`=1";
+    map<int, MYSQL_ROW> find_result = query(conn, find_query);
+    cout << find_result[0][1] << endl;
 
 
-	    return 0;
-	}
-
+    return 0;
+}
 */
