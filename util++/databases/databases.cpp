@@ -91,4 +91,5 @@ map<int, MYSQL_ROW> read(MYSQL* conn, string query) {
 
 	    return 0;
 	}
+
 */
